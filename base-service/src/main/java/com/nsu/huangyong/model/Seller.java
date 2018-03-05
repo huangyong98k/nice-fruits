@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -18,6 +19,7 @@ public class Seller {
      * id
      */
     @Id
+    @GeneratedValue
     private Long id;
     /**
      * 卖家编号
@@ -75,4 +77,19 @@ public class Seller {
      * 发货地址
      */
     private String send_address;
+
+    public Seller(String sellerNo, String nickname, String sex, String trueName, int certificateType, String certificateNo, String loginPassword, String phoneNo, String registerTime, int status, String balance, String head_portrait) {
+        this.sellerNo = sellerNo;
+        this.nickname = nickname;
+        this.sex = sex;
+        this.trueName = trueName;
+        this.certificateType = certificateType;
+        this.certificateNo = certificateNo;
+        this.loginPassword = loginPassword;
+        this.phoneNo = phoneNo;
+        this.registerTime = registerTime;
+        this.status = status;
+        this.balance = balance;
+        this.head_portrait = head_portrait;
+    }
 }

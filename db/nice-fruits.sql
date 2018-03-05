@@ -315,7 +315,7 @@ create table member
    member_level         int default 0 comment '会员等级（0：普通会员 ）',
    due_time             datetime comment '会员到期时间',
    register_time        datetime not null comment '注册时间',
-   status               int not null comment '状态（0：正常 1：锁定 2：停用）',
+   status               int not null comment '状态（0：正常 1：锁定 2：停用 100：未实名）',
    head_portrait        varchar(200) not null comment '头像图片地址',
    primary key (id)
 );

@@ -47,6 +47,12 @@ server:
 eureka:
   enabled: false
 
+
+nsu:
+  huangyong:
+    base:
+      commonHeadPortrait: C:\Users\huayong\Desktop\毕业设计\headPortrait\common
+
 #zuul:
 #  routes:
 ##    api-a-rul: # 传统配置

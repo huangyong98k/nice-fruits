@@ -3,9 +3,13 @@ package com.nsu.huangyong.common.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.FieldError;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 水果商城工具类
@@ -14,6 +18,7 @@ import java.util.List;
 @Slf4j
 public class NFruitsUtils {
     private static final String DEFAULT_DATE_FORMAT = "yyyyMMddHHmmss";
+    private static final String DEFAULT_TIME_FORMAT = "yyyyMMddHHmmssSSS";
 
     private NFruitsUtils() {
         throw new IllegalStateException("Utility class");
@@ -55,8 +60,6 @@ public class NFruitsUtils {
 
     /**
      * 将指定时间的Date部分转成yyyyMMdd格式的Integer
-     * @param localDateTime 要转换的时间
-     * @return yyyyMMdd格式的Integer值
      */
     public static Integer dateToInteger(LocalDateTime localDateTime) {
         try {
@@ -69,8 +72,6 @@ public class NFruitsUtils {
 
     /**
      * 将指定时间的Date部分转成默认格式的Integer
-     * @param localDateTime 要转换的时间
-     * @return 默认格式的String
      */
     public static String dateToStr(LocalDateTime localDateTime) {
         try {
@@ -79,5 +80,44 @@ public class NFruitsUtils {
             log.debug("dateToStr is excepted. " , e);
             return "";
         }
+    }
+
+    /**
+     * 获取当前时间
+     * @return 返回时间精确到秒，格式为yyyy-MM-dd HH:mm:ss
+     */
+    public static String getCurrentTime(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.format(new Date());
+    }
+
+    /**
+     * 生成17的唯一编号
+     */
+    public static  String identifier(){
+        Calendar cal = Calendar.getInstance();
+        Date time = cal.getTime();
+        return (new SimpleDateFormat(DEFAULT_TIME_FORMAT).format(time));
+    }
+
+    /**
+     * 获取6位的随机数
+     * @return
+     */
+    public static String generateNaturalNumber(){
+        Random random = new Random();
+        String str = String.valueOf(random.nextInt(999999)+1);
+        if (str.length() == 1 ) {
+            str = "00000" + str;
+        }else if(str.length() == 2){
+            str = "0000" + str;
+        }else if (str.length() == 3){
+            str = "000"+str;
+        }else if (str.length() == 4){
+            str = "00"+str;
+        }else if (str.length() == 5){
+            str = "0"+str;
+        }
+        return str;
     }
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @NoArgsConstructor
@@ -14,6 +15,7 @@ public class Member {
      * id
      */
     @Id
+    @GeneratedValue
     private Long id;
     /**
      * 会员编号
@@ -75,4 +77,15 @@ public class Member {
      * 头像图片地址
      */
     private String headPortrait;
+
+    public Member(String memberNo, String nickname, String sex, String loginPassword, String phoneNo,String registerTime, int status, String headPortrait) {
+        this.memberNo = memberNo;
+        this.nickname = nickname;
+        this.sex = sex;
+        this.loginPassword = loginPassword;
+        this.phoneNo = phoneNo;
+        this.registerTime = registerTime;
+        this.status = status;
+        this.headPortrait = headPortrait;
+    }
 }
