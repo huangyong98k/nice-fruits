@@ -413,7 +413,7 @@ create table seller
    status               int default 0 comment '状态（0：待审核 1：已实名 2：锁定 3：停用）',
    balance              varchar(10) not null comment '余额',
    head_portrait        varchar(200) not null comment '头像图片地址',
-   send_address         varchar(100) comment '发货di',
+   send_address         varchar(100) comment '发货地址',
    primary key (id)
 );
 

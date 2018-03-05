@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: base-service
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/nice_fruits?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: root
+    # 改用 Druid 连接池（DruidProperties 类的属性命名上要分开，这里是用中划线，类是用驼峰命名）
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      prepared-statements: true
+      # 监控平台首页地址：http://127.0.0.1:8001/druid/index.html
+      slf4j.enabled: true
+      wall.enabled: true
+      web-stat.enabled: true
+      stat-view-servlet.enabled: true
+      stat-view-servlet:
+        url-mappings: /druid/*
+        allow: 127.0.0.1
+        deny: 192.168.1.73
+        login-username: admin
+        login-password: 123456
+      # 是否禁用HTML页面上的“Reset All”功能
+        reset-enable: false
+
+      max-pool-prepared-statement-per-connection-size: 20
+      max-open-prepared-statements: 20
+      web-stat:
+        url-patterns: /*
+
+server:
+  port: 8001
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:1001/eureka/
+eureka:
+  enabled: false
+
+#zuul:
+#  routes:
+##    api-a-rul: # 传统配置
+##      path: /api-a-url/**
+##      url: http://15.116.20.200/
+#    osp-openaccount: # 面向服务的配置
+#      path: /openaccount/**
+#      serviceId: osp-openaccount
+#    eureka-client: /test/** # 面向服务的简化配置
+#
+#ribbon:
+#  eureka:
+#    enabled: false
+#
+#osp-openaccount:
+#  ribbon:
+#    listOfServers: localhost:8080
