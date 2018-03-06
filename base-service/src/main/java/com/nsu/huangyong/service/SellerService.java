@@ -6,11 +6,11 @@ public interface SellerService {
     /**
      * 商家登录
      */
-    boolean sellerLogin(String phoneNo,String loginPassword);
+    int sellerLogin(String phoneNo,String loginPassword);
     /**
      * 商家注册
      */
-    boolean sellerRegister(String phoneNo, String password, String captcha, HttpServletRequest request);
+    boolean sellerRegister(String trueName,String sex,String certificateType,String certificateNo,String phoneNo, String password, String captcha, HttpServletRequest request);
 
     /**
      * 密码重置

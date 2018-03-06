@@ -40,7 +40,7 @@ public class Seller {
     /**
      * 证件类型
      */
-    private int certificateType;
+    private String certificateType;
     /**
      * 证件号
      */
@@ -68,7 +68,7 @@ public class Seller {
     /**
      * 余额
      */
-    private String balance;
+    private Double balance;
     /**
      * 头像图片地址
      */
@@ -78,7 +78,7 @@ public class Seller {
      */
     private String send_address;
 
-    public Seller(String sellerNo, String nickname, String sex, String trueName, int certificateType, String certificateNo, String loginPassword, String phoneNo, String registerTime, int status, String balance, String head_portrait) {
+    public Seller(String sellerNo, String nickname, String sex, String trueName, String certificateType, String certificateNo, String loginPassword, String phoneNo, String registerTime, int status, Double balance, String head_portrait) {
         this.sellerNo = sellerNo;
         this.nickname = nickname;
         this.sex = sex;

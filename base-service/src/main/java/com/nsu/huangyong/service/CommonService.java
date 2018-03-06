@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
  * 通用基础服务
  * @author Yong Huang
  */
-public interface CommomService {
+public interface CommonService {
     /**
      * 校验验证码(匹配：true  不匹配：false)
      */

@@ -1,7 +1,6 @@
 package com.nsu.huangyong.web;
 
 import com.nsu.huangyong.common.constant.CommonRespCode;
-import com.nsu.huangyong.service.CommomService;
 import com.nsu.huangyong.service.MemberService;
 import com.nsu.huangyong.vo.CommonResp;
 import io.swagger.annotations.Api;
@@ -17,18 +16,17 @@ import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v2")
+@RequestMapping("/api")
 @Api(value = "API-base-service",description = "会员业务支撑服务")
 public class MemberController {
     @Autowired
     private MemberService memberService;
-    @Autowired
-    private CommomService commomService;
 
     @ApiOperation(value ="会员登录" )
     @GetMapping("/member/login")
     public CommonResp login(@RequestParam("phoneNo") String phoneNo,
-                            @RequestParam("loginPassword") String loginPassword){
+                            @RequestParam("loginPassword") String loginPassword,
+                            HttpServletRequest request){
         log.info("recevie phoneNo:{}    loginPassword:{}",phoneNo,loginPassword);
         if(memberService.memberLogin(phoneNo,loginPassword)){
             return new CommonResp(CommonRespCode.SUCCESS);
@@ -60,16 +58,6 @@ public class MemberController {
             return new CommonResp(CommonRespCode.SUCCESS);
         }
         return new CommonResp(CommonRespCode.FAIL,"验证码错误");
-    }
-
-    @ApiOperation(value ="发送验证码" )
-    @GetMapping("/member/sendcaptcha")
-    public CommonResp sendCaptcha(@RequestParam("phoneNo") String phoneNo, HttpServletRequest request){
-        log.info("recevie  phoneNo:{}",phoneNo);
-        if(commomService.sendCaptcha(phoneNo,request)){
-            return new CommonResp(CommonRespCode.SUCCESS);
-        }
-        return new CommonResp(CommonRespCode.FAIL,"发送失败");
     }
 
     @ApiOperation(value ="检验是否存在此用户" )

@@ -6,7 +6,7 @@ public interface MemberService {
     /**
      * 会员登录
      */
-    boolean memberLogin(String phoneNo,String loginPassword);
+    boolean memberLogin(String phoneNo,String loginPassword, HttpServletRequest request);
     /**
      * 会员注册
      */

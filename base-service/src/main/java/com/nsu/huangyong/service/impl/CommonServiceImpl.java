@@ -1,7 +1,7 @@
 package com.nsu.huangyong.service.impl;
 
 import com.nsu.huangyong.common.utils.NFruitsUtils;
-import com.nsu.huangyong.service.CommomService;
+import com.nsu.huangyong.service.CommonService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 @Slf4j
 @Service
-public class CommomServiceImpl implements CommomService {
+public class CommonServiceImpl implements CommonService {
     @Override
     public boolean matchCaptcha(String captcha, HttpServletRequest request) {
         HttpSession session = request.getSession();

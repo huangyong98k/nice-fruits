@@ -404,7 +404,7 @@ create table seller
    nickname   			varchar(11) not null comment '昵称',
    sex                  varchar(2) not null comment '性别',
    true_name            varchar(10) not null comment '真实姓名',
-   certificate_type     int not null comment '证件类型',
+   certificate_type     varchar(30) not null comment '证件类型',
    certificate_no       varchar(18) not null comment '证件号',
    login_password       varchar(16) not null comment '登录密码',
    withdrawal_password  int comment '提现密码',
