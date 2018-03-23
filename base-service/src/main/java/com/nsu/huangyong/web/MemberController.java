@@ -28,7 +28,7 @@ public class MemberController {
                             @RequestParam("loginPassword") String loginPassword,
                             HttpServletRequest request){
         log.info("recevie phoneNo:{}    loginPassword:{}",phoneNo,loginPassword);
-        if(memberService.memberLogin(phoneNo,loginPassword)){
+        if(memberService.memberLogin(phoneNo,loginPassword,request)){
             return new CommonResp(CommonRespCode.SUCCESS);
         }
         return new CommonResp(CommonRespCode.FAIL,"用户名或密码错误");
